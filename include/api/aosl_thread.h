@@ -50,7 +50,7 @@ extern __aosl_api__ void aosl_rwlock_wr2rdlock (aosl_rwlock_t rwlock);
 extern __aosl_api__ void aosl_rwlock_destroy (aosl_rwlock_t rwlock);
 
 
-typedef void *aosl_cond_t;
+//typedef void *aosl_cond_t;
 
 extern __aosl_api__ aosl_cond_t aosl_cond_create (void);
 extern __aosl_api__ void aosl_cond_signal (aosl_cond_t cond_var);

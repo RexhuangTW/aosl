@@ -139,6 +139,7 @@ int os_poll_dispatch (struct mp_queue *q, intptr_t timeo)
 			 * now, then just return 0 here, do nothing else (no need to
 			 * set the need_kicking back to 0 too).
 			 **/
+			aosl_msleep(5);
 			return 0;
 		}
 
@@ -164,6 +165,7 @@ int os_poll_dispatch (struct mp_queue *q, intptr_t timeo)
 				 * just return 0 here, no need to do following
 				 * other checkings.
 				 **/
+				aosl_msleep(5);
 				return 0;
 			}
 

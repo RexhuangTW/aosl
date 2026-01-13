@@ -77,7 +77,7 @@
 static const char *server_ip = "127.0.0.1";
 static const uint16_t server_port = 9527;
 
-static int aosl_test_hal_atomic()
+static int aosl_test_hal_atomic(void)
 {
   intptr_t a = 0;
 
@@ -104,7 +104,7 @@ static int aosl_test_hal_atomic()
   return 0;
 }
 
-static int aosl_test_hal_errno()
+static int aosl_test_hal_errno(void)
 {
   bool have_EAGAIN = 0;
   bool have_EINTR = 0;
@@ -123,7 +123,7 @@ static int aosl_test_hal_errno()
   return 0;
 }
 
-static int aosl_test_hal_file()
+static int aosl_test_hal_file(void)
 {
   // ignore
   return 0;
@@ -244,7 +244,7 @@ __tag_out:
 }
 #endif
 
-static int aosl_test_hal_iomp()
+static int aosl_test_hal_iomp(void)
 {
   int ret;
   int client_fd = -1;
@@ -306,22 +306,22 @@ __tag_out:
   return 0;
 }
 
-static int aosl_test_hal_socket()
+static int aosl_test_hal_socket(void)
 {
   return 0;
 }
 
-static int aosl_test_hal_thread()
+static int aosl_test_hal_thread(void)
 {
   return 0;
 }
 
-static int aosl_test_hal_time()
+static int aosl_test_hal_time(void)
 {
   return 0;
 }
 
-static int aosl_test_hal_utils()
+static int aosl_test_hal_utils(void)
 {
   return 0;
 }

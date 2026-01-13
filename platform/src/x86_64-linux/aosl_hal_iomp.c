@@ -120,10 +120,10 @@ int aosl_hal_poll(aosl_poll_event_t fds[], int nfds, int timeout_ms)
 	}
 
 	for (int i = 0; i < nfds; i++) {
-		if (n_fds[i].revents & POLLIN) {
+		if ((n_fds[i].revents & POLLIN)) {
 			fds[i].revents |= AOSL_POLLIN;
 		}
-		if (n_fds[i].revents |= POLLOUT) {
+		if ((n_fds[i].revents & POLLOUT)) {
 			fds[i].revents |= AOSL_POLLOUT;
 		}
 	}
