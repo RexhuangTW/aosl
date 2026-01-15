@@ -70,6 +70,8 @@ typedef void (*aosl_dgram_sk_data_t) (void *data, size_t len, uintptr_t argc, ui
 
 extern __aosl_api__ aosl_fd_t aosl_socket (int domain, int type, int protocol);
 extern __aosl_api__ int aosl_bind (aosl_fd_t sockfd, const aosl_sockaddr_t *addr);
+extern __aosl_api__ int aosl_bind_port_only (aosl_fd_t sockfd, uint16_t af, unsigned short port);
+extern __aosl_api__ int aosl_bind_device (aosl_fd_t sockfd, const char *if_name);
 //extern __aosl_api__ int aosl_getsockname (aosl_fd_t sockfd, aosl_sockaddr_t *addr);
 //extern __aosl_api__ int aosl_getpeername (aosl_fd_t sockfd, aosl_sockaddr_t *addr);
 //extern __aosl_api__ int aosl_getsockopt (aosl_fd_t sockfd, int level, int optname, void *optval, int *optlen);
@@ -102,8 +104,6 @@ extern __aosl_api__ int aosl_mpq_add_stream_socket_on_q (aosl_mpq_t qid, aosl_fd
 
 extern __aosl_api__ ssize_t aosl_send (aosl_fd_t sockfd, const void *buf, size_t len, int flags);
 extern __aosl_api__ ssize_t aosl_sendto (aosl_fd_t sockfd, const void *buf, size_t len, int flags, const aosl_sockaddr_t *dest_addr);
-
-extern __aosl_api__ int aosl_ip_sk_bind_port_only (aosl_fd_t sk, uint16_t af, unsigned short port);
 
 
 typedef struct {

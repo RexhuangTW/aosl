@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <sys/errno.h>
 #include <netinet/in.h>
+#include <net/if.h>
 #include <hal/aosl_hal_socket.h>
 #include <hal/aosl_hal_errno.h>
 #include <api/aosl_route.h>
@@ -137,6 +138,18 @@ int aosl_hal_sk_bind(int sockfd, const aosl_sockaddr_t* addr)
 	conv_addr_to_os(addr, n_addr);
 	socklen_t addrlen = get_addrlen(n_addr->sa_family);
 	int ret = bind(sockfd, n_addr, addrlen);
+	if (ret < 0) {
+		return aosl_hal_errno_convert(errno);
+	}
+	return 0;
+}
+
+int aosl_hal_sk_bind_device(int sockfd, const char *if_name)
+{
+	struct ifreq ifr;
+	memset(&ifr, 0, sizeof(ifr));
+	strncpy(ifr.ifr_name, if_name, sizeof(ifr.ifr_name) - 1);
+	int ret = setsockopt(sockfd, SOL_SOCKET, SO_BINDTODEVICE, (void *)&ifr, sizeof(ifr));
 	if (ret < 0) {
 		return aosl_hal_errno_convert(errno);
 	}

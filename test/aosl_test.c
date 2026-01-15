@@ -438,7 +438,7 @@ static int test_mpq_client_init(void *arg)
   aosl_inet_addr_from_string(&addr.sin_addr, server_ip);
   mpq_client_res.server_addr = addr;
 
-  ret = aosl_ip_sk_bind_port_only(fd, AOSL_AF_INET, 0);
+  ret = aosl_bind_port_only(fd, AOSL_AF_INET, 0);
   EXPECT_EQ(ret, 0);
   ret = aosl_mpq_add_dgram_socket(fd, 1400, mpq_client_on_data, mpq_client_on_event, 1, &mpq_client_res);
   EXPECT_EQ(ret, 0);

@@ -12,18 +12,18 @@ platform/src/${platform}: HAL layer implementation code
 # 2.2 HAL Layer Implementation
 Implement the interfaces defined in the header files in platform/include/hal.
 Porting includes atomic, file, iomp, socket, memory, thread, time, etc.
-You can refer to the porting implementation examples of x86_64-linux and esp32-s3 when porting.
+You can refer to the porting implementation examples of linux and esp32-s3 when porting.
 
 # 3. Build Guide
 There is a CMakeLists.txt file in the project root directory for building examples.
-CMakeLists.txt defines some build parameters and variables to control script behavior. The default behavior of these parameters is to compile the aosl library for x86_64-linux. You can set them before using this CMakeLists.txt to adapt to other platforms.
+CMakeLists.txt defines some build parameters and variables to control script behavior. The default behavior of these parameters is to compile the aosl library for linux. You can set them before using this CMakeLists.txt to adapt to other platforms.
 
 There are two build artifacts for aosl:
 - (1) Static library: libaosl.a
 - (2) Header files: exported "api/", "hal/" header files
 
 # 3.0 Default Build
-You can execute the following commands to compile the aosl artifacts for x86_64-linux:
+You can execute the following commands to compile the aosl artifacts for linux:
 ```
 cd aosl
 mkdir build
@@ -42,7 +42,7 @@ At this point, you can see the libaosl.a static library and the include exported
 
 * Build Variables:  
   - (1) AOSL_DIR: Root directory of the aosl library, if not set, it defaults to CMAKE_CURRENT_SOURCE_DIR
-  - (2) CONFIG_PLATFORM: Name of the target platform to port, such as x86_64-linux, esp32-s3, default is x86_64-linux
+  - (2) CONFIG_PLATFORM: Name of the target platform to port, such as linux, esp32-s3, default is linux
 
 There are two ways to set parameters:
 - (1) Specify through cmake command parameters, for example:

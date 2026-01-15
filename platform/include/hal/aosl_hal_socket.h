@@ -67,6 +67,14 @@ int aosl_hal_sk_socket(enum aosl_socket_domain domain,
 int aosl_hal_sk_bind(int sockfd, const aosl_sockaddr_t* addr);
 
 /**
+ * @brief   bind a socket to a specific network interface
+ * @param [in] sockfd socket file descriptor
+ * @param [in] if_name name of the network interface
+ * @return 0 on success, < 0 on error. should use aosl_hal_errno_convert to get error code
+ */
+int aosl_hal_sk_bind_device(int sockfd, const char *if_name);
+
+/**
  * @brief   listen for incoming connections
  * @param [in] sockfd socket file descriptor
  * @param [in] backlog maximum length of the pending connections queue

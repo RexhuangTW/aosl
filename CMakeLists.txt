@@ -3,8 +3,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ==============================================================================
 # Available configurable variables for AOSL:
-#   CONFIG_PLATFORM: Target platform (default: x86_64-linux)
-#     Available platforms: x86_64-linux, esp32-s3, etc.
+#   CONFIG_PLATFORM: Target platform (default: linux)
+#     Available platforms: linux, esp32-s3, etc.
 #     Usage: Set before including CMakeLists.txt or use -DCONFIG_PLATFORM=<platform>
 #
 #   AOSL_DIR: Library root directory (default: ${CMAKE_CURRENT_SOURCE_DIR})
@@ -37,7 +37,7 @@ endif()
 # ==============================================================================
 # Specify target platform (can be overridden by setting CONFIG_PLATFORM or using -DCONFIG_PLATFORM=...)
 if (NOT DEFINED CONFIG_PLATFORM)
-    set(CONFIG_PLATFORM "x86_64-linux")
+    set(CONFIG_PLATFORM "linux")
 endif()
 
 # Check if platform directory exists

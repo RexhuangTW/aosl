@@ -836,7 +836,7 @@ __export_in_so__ int aosl_ip_sk_addr_init_with_port (aosl_sk_addr_t *sk_addr, ui
 	return 0;
 }
 
-__export_in_so__ int aosl_ip_sk_bind_port_only (aosl_fd_t sk, uint16_t af, unsigned short port)
+__export_in_so__ int aosl_bind_port_only (aosl_fd_t sk, uint16_t af, unsigned short port)
 {
 	aosl_sk_addr_t sk_addr;
 
@@ -858,6 +858,20 @@ __export_in_so__ int aosl_ip_sk_bind_port_only (aosl_fd_t sk, uint16_t af, unsig
 
 	sk_addr.sa.sa_family = af;
 	int err = aosl_hal_sk_bind (sk, &sk_addr.sa);
+	if (err < 0) {
+		aosl_hal_set_error(err);
+		return -aosl_errno;
+	}
+	return 0;
+}
+
+__export_in_so__ int aosl_bind_device (aosl_fd_t sockfd, const char *if_name)
+{
+	if (if_name == NULL || if_name[0] == '\0') {
+		aosl_errno = AOSL_EINVAL;
+		return -1;
+	}
+	int err = aosl_hal_sk_bind_device (sockfd, if_name);
 	if (err < 0) {
 		aosl_hal_set_error(err);
 		return -aosl_errno;
