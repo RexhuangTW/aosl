@@ -98,9 +98,6 @@ aosl_test();
 
 2. **Build Options**: The `CMakeLists.txt` file has been configured with build options suitable for ameba-rtos, including:
    - `AOSL_DECLARE_PROJECT OFF`: Not declared as a standalone project
-   - `AOSL_COMPILE_LIBRARY OFF`: Not compiled as a standalone library
-   - `AOSL_INSTALL_HEADERS OFF`: Headers are not installed
-   - `AOSL_COMPILE_TEST OFF`: Unit tests are not compiled (tests are run through example programs)
 
 3. **Network Dependency**: Some AOSL features depend on network connectivity. Please ensure that WiFi is properly configured and connected before running tests.
 

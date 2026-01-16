@@ -36,9 +36,6 @@ At this point, you can see the libaosl.a static library and the include exported
 # 3.1.1 Build Control Settings
 * Build Options:  
   - (1) AOSL_DECLARE_PROJECT: (ON/OFF) Whether to build aosl as a standalone project, default ON. If you only want to include aosl as a subdirectory, you can set it to OFF.
-  - (2) AOSL_COMPILE_LIBRARY: (ON/OFF) Whether to compile the libaosl.a static library, default ON. If you only want to use the variables (such as AOSL_ADD_SOURCES, AOSL_ADD_INCLUDES_PUBLIC), you can set it to OFF.
-  - (3) AOSL_COMPILE_TEST   : (ON/OFF) Whether to compile the aosl_test program, default ON.
-  - (4) AOSL_INSTALL_HEADERS: (ON/OFF) Whether to copy the aosl library API header files to the output directory, default ON.
 
 * Build Variables:  
   - (1) AOSL_DIR: Root directory of the aosl library, if not set, it defaults to CMAKE_CURRENT_SOURCE_DIR
@@ -48,21 +45,18 @@ There are two ways to set parameters:
 - (1) Specify through cmake command parameters, for example:
 ```
 cmake -DCONFIG_PLATFORM=esp32-s3 \
-      -DAOSL_DECLARE_PROJECT=OFF \
-      -DAOSL_COMPILE_LIBRARY=OFF
+      -DAOSL_DECLARE_PROJECT=OFF
 ```
 - (2) Set parameters before include, for example:
 ```
 set(AOSL_DIR ${COMPONENT_PATH}/../../../../../..)
 set(CONFIG_PLATFORM "esp32-s3")
 set(AOSL_DECLARE_PROJECT OFF CACHE BOOL "Declare as Standalone Project" FORCE)
-set(AOSL_COMPILE_LIBRARY OFF CACHE BOOL "Compile Library" FORCE)
-set(AOSL_INSTALL_HEADERS OFF CACHE BOOL "Install Header Files" FORCE)
 include(${AOSL_DIR}/CMakeLists.txt)
 ```
 
-* Build Parameters:  
-  CMakeLists.txt defines the following list variables for building:
+* Build Contents:  
+  CMakeLists.txt defines the following contents list for building:
   - (1) AOSL_ADD_OPTIONS:          Compilation options used during compilation
   - (2) AOSL_ADD_DEFINITIONS:      Macro definitions used during compilation
   - (3) AOSL_ADD_INCLUDES_PUBLIC   Header file directories that need to be exported externally during compilation
@@ -71,7 +65,10 @@ include(${AOSL_DIR}/CMakeLists.txt)
   If you need to introduce aosl as a subdir when porting, you can use these variables for compilation and building.
 
 # 3.1.2 Toolchain Settings
-cmake/toolchain_template.cmake is a default toolchain description file. When porting, you can add modifications to introduce the corresponding platform's toolchain
+cmake/toolchain_template.cmake is a default toolchain description file. When porting, you can add modifications to introduce the corresponding platform's toolchain or just modify the default toolchain file.
+```
+cmake -DCMAKE_TOOLCHAIN_FILE="arm-linux-gnu.cmake"
+```
 
 # 3.1.3 Start Building
 Use the platform's build project for compilation and building.
@@ -84,9 +81,6 @@ set(AOSL_DIR ${COMPONENT_PATH}/../../../../../..)
 set(CONFIG_PLATFORM "esp32-s3")
 # 2. Set build options
 set(AOSL_DECLARE_PROJECT OFF CACHE BOOL "Declare as Standalone Project" FORCE)
-set(AOSL_COMPILE_LIBRARY OFF CACHE BOOL "Compile Library" FORCE)
-set(AOSL_COMPILE_TEST    OFF CACHE BOOL "Compile test" FORCE)
-set(AOSL_INSTALL_HEADERS OFF CACHE BOOL "Install Header Files" FORCE)
 
 # 3. Use aosl/CmakeLists.txt as subdir
 include(${AOSL_DIR}/CMakeLists.txt)

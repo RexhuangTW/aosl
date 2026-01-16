@@ -1,9 +1,6 @@
 set(AOSL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/aosl)
 set(CONFIG_PLATFORM "rtl8713")
 set(AOSL_DECLARE_PROJECT OFF CACHE BOOL "Declare as Standalone Project" FORCE)
-set(AOSL_COMPILE_LIBRARY OFF CACHE BOOL "Compile Library" FORCE)
-set(AOSL_INSTALL_HEADERS OFF CACHE BOOL "Install Header Files" FORCE)
-set(AOSL_COMPILE_TEST    OFF CACHE BOOL "Compile Unit Test"    FORCE)
 
 include(${AOSL_DIR}/CMakeLists.txt)
 

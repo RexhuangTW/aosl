@@ -78,7 +78,7 @@ if(CONFIG_AOSL_IPV6)
 endif()
 
 ############## Compile static lib ############
-if (AOSL_COMPILE_LIBRARY)
+if (AOSL_DECLARE_PROJECT)
     set(LIB_NAME "aosl")
     add_library(${LIB_NAME} STATIC ${AOSL_ADD_SOURCES})
     target_include_directories(${LIB_NAME} PRIVATE ${AOSL_ADD_INCLUDES_PRIVATE})
@@ -88,7 +88,7 @@ if (AOSL_COMPILE_LIBRARY)
 endif()
 
 ############## Compile test bin ############
-if (AOSL_COMPILE_TEST)
+if (AOSL_DECLARE_PROJECT)
     add_executable(aosl_test ${AOSL_DIR}/test/aosl_test_main.c)
     target_include_directories(aosl_test PRIVATE ${AOSL_ADD_INCLUDES_PUBLIC})
     target_link_libraries(aosl_test PRIVATE aosl "pthread" "dl" "rt" "m")
@@ -96,7 +96,7 @@ if (AOSL_COMPILE_TEST)
 endif()
 
 ############## Copy include file ############
-if (AOSL_INSTALL_HEADERS)
+if (AOSL_DECLARE_PROJECT)
     get_filename_component(ABS_BINARY_DIR "${CMAKE_BINARY_DIR}" ABSOLUTE)
     get_filename_component(ABS_AOSL_DIR "${AOSL_DIR}" ABSOLUTE)
 
