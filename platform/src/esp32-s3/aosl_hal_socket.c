@@ -43,8 +43,10 @@ static inline int conv_proto_to_os(enum aosl_socket_proto proto)
 		return IPPROTO_TCP;
 	case AOSL_IPPROTO_UDP:
 		return IPPROTO_UDP;
+	case AOSL_IPPROTO_AUTO:
+		return 0;
 	default:
-		return -1;
+		return 0;
 	}
 }
 

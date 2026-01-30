@@ -34,14 +34,16 @@ static inline int conv_type_to_os(enum aosl_socket_type type)
 
 static inline int conv_proto_to_os(enum aosl_socket_proto proto)
 {
-  switch (proto) {
-    case AOSL_IPPROTO_TCP:
-      return IPPROTO_TCP;
-    case AOSL_IPPROTO_UDP:
-      return IPPROTO_UDP;
-    default:
-      return -1;
-  }
+	switch (proto) {
+	case AOSL_IPPROTO_TCP:
+		return IPPROTO_TCP;
+	case AOSL_IPPROTO_UDP:
+		return IPPROTO_UDP;
+	case AOSL_IPPROTO_AUTO:
+		return 0;
+	default:
+		return 0;
+	}
 }
 
 static inline void conv_addr_to_os(const aosl_sockaddr_t *ah_addr, struct sockaddr *os_addr)

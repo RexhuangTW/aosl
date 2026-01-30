@@ -32,6 +32,7 @@ enum aosl_socket_type {
 
 // socket protocol
 enum aosl_socket_proto {
+  AOSL_IPPROTO_AUTO = 0,
   AOSL_IPPROTO_TCP = 1,
   AOSL_IPPROTO_UDP = 2,
 };
