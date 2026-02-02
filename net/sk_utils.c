@@ -219,6 +219,9 @@ static __inline__ int __do_connect (aosl_fd_t sockfd, const aosl_sockaddr_t *des
 
 	err = aosl_hal_sk_connect (sockfd, dest_addr);
 	if (err < 0) {
+		if (err == AOSL_HAL_RET_EINPROGRESS) {
+			return 0;
+		}
 		aosl_hal_set_error(err);
 		return -aosl_errno;
 	}

@@ -18,6 +18,7 @@ extern "C" {
 #define AOSL_HAL_RET_EHAL            -2000
 #define AOSL_HAL_RET_EAGAIN          -2001
 #define AOSL_HAL_RET_EINTR           -2002
+#define AOSL_HAL_RET_EINPROGRESS     -2003
 
 /**
  * @brief Convert standard errno to AOSL HAL error codes

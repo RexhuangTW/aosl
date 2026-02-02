@@ -10,6 +10,8 @@ int aosl_hal_errno_convert(int errnum)
 			return AOSL_HAL_RET_EAGAIN;
 		case EINTR:
 			return AOSL_HAL_RET_EINTR;
+		case EINPROGRESS:
+			return AOSL_HAL_RET_EINPROGRESS;
 		default:
 			return AOSL_HAL_RET_EHAL;
 	}
