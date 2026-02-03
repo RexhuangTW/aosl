@@ -113,7 +113,7 @@ static int get_unused_mpq_id (void)
 			return -AOSL_EOVERFLOW;
 		}
 
-		new_table_size = mpq_table_size + 64;
+		new_table_size = mpq_table_size + 8;
 
 		new_bits = bitmap_create (new_table_size);
 		if (!new_bits) {
@@ -140,7 +140,7 @@ static int get_unused_mpq_id (void)
 		mpq_table_size = new_table_size;
 
 		mpq_id = bitmap_find_first_zero_bit (mpq_id_pool_bits);
-		BUG_ON (mpq_id >= 0);
+		BUG_ON (mpq_id < 0);
 	}
 
 	bitmap_set (mpq_id_pool_bits, mpq_id);

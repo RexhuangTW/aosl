@@ -48,7 +48,7 @@ static int alloc_tls_key (void)
 			return -AOSL_EOVERFLOW;
 		}
 
-		new_size = tls_key_id_size + 8;
+		new_size = tls_key_id_size + STATIC_TLS_KEY_ID_SIZE;
 
 		new_bits = bitmap_create (new_size);
 		if (!new_bits) {

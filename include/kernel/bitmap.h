@@ -12,7 +12,7 @@
 #include <api/aosl_types.h>
 
 typedef struct bitmap_s {
-	uint64_t *bit_arr;   // bit curr value
+	uint8_t *bit_arr;   // bit curr value
 	uint8_t bit_arr_cnt; // bit array cnt
 	uint8_t bit_cnt;     // bit cnt
 } bitmap_t;

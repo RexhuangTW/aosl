@@ -89,7 +89,7 @@ static int get_unused_timer_id (void)
 			return -AOSL_EOVERFLOW;
 		}
 
-		new_table_size = timer_table_size + 64;
+		new_table_size = timer_table_size + 8;
 
 		new_bits = bitmap_create(new_table_size);
 		if (!new_bits) {

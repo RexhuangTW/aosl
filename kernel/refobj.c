@@ -91,7 +91,7 @@ static int get_unused_refobj_id (void)
 			return -AOSL_EOVERFLOW;
 		}
 
-		new_table_size = refobj_table_size + 64;
+		new_table_size = refobj_table_size + 8;
 
 		new_bits = bitmap_create (new_table_size);
 		if (!new_bits) {

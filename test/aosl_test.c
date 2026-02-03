@@ -1944,7 +1944,7 @@ static void test_mpq_client_send_func(const aosl_ts_t *queued_ts_p, aosl_refobj_
   }
 }
 
-static int aosl_test_mpq(void)
+static int aosl_test_mpq_api(void)
 {
   int priority = AOSL_THRD_PRI_DEFAULT; // default
   int stack_size = 0; // default
@@ -1987,6 +1987,32 @@ static int aosl_test_mpq(void)
   aosl_mpq_destroy_wait(q_client);
   EXPECT_EQ(mpq_server_res.recv_cnt, cnt_alls);
   EXPECT_EQ(mpq_client_res.sent_cnt, cnt_alls);
+  LOG_FMT("test success");
+  return 0;
+}
+
+static int aosl_test_mpq_max()
+{
+  int priority = AOSL_THRD_PRI_DEFAULT; // default
+  int stack_size = 0; // default
+  int max_func_size = 10000;
+  char qname[32] = {0};
+  aosl_mpq_t q;
+
+  for (int i = 0; i < 10; i++) {
+    sprintf(qname, "qtest-%d", i);
+    LOG_FMT("create q=%s", qname);
+    q = aosl_mpq_create(priority, stack_size, max_func_size, qname, NULL,NULL, NULL);
+    CHECK(!aosl_mpq_invalid(q));
+  }
+
+  return 0;
+}
+
+static int aosl_test_mpq(void)
+{
+  CHECK(aosl_test_mpq_api() == 0);
+  //CHECK(aosl_test_mpq_max() == 0);
   LOG_FMT("test success");
   return 0;
 }
