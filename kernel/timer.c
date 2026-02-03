@@ -117,7 +117,7 @@ static int get_unused_timer_id (void)
 		timer_table_size = new_table_size;
 
 		timer_id = bitmap_find_first_zero_bit (timer_id_pool_bits);
-		BUG_ON (timer_id >= 0);
+		BUG_ON (timer_id < 0);
 	}
 
 	bitmap_set (timer_id_pool_bits, timer_id);

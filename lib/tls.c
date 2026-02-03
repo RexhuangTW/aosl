@@ -75,7 +75,7 @@ static int alloc_tls_key (void)
 		tls_key_id_size = new_size;
 
 		key = bitmap_find_first_zero_bit (tls_key_id_bits);
-		BUG_ON (key >= 0);
+		BUG_ON (key < 0);
 	}
 
 	bitmap_set (tls_key_id_bits, key);

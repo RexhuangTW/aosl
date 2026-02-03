@@ -118,7 +118,7 @@ static int get_unused_refobj_id (void)
 		refobj_table_size = new_table_size;
 
 		ref_id = bitmap_find_first_zero_bit (refobj_id_pool_bits);
-		BUG_ON (ref_id >= 0);
+		BUG_ON (ref_id < 0);
 	}
 
 	bitmap_set (refobj_id_pool_bits, ref_id);
